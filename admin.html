@@ -56,12 +56,22 @@
 <section id="sinConfig" class="acceso" hidden>
   <div class="acceso__caja">
     <img class="acceso__logo" src="assets/img/marca-dis.png" alt="Dieselis">
-    <h1>Falta conectar la base de datos</h1>
+    <h1>Falta configurar el repositorio</h1>
     <p class="acceso__nota">
-      Abre <code>assets/js/config.js</code> y cambia <code>github.usuario</code>
-      por tu nombre de usuario de GitHub, y <code>github.repo</code> por el nombre
-      del repositorio. Los pasos están en el README.
+      El panel todavía no sabe a qué repositorio escribir. Abre el archivo
+      <code>assets/js/config.js</code>, busca el bloque <code>github</code> y cambia
+      estas dos líneas por tus datos reales:
     </p>
+
+    <pre class="codigo">github: {
+  usuario: "<b>tu-usuario</b>",
+  repo: "<b>dieselis</b>",</pre>
+
+    <p class="acceso__nota">
+      Guarda el archivo y recarga esta página. Si ya lo subiste a GitHub,
+      acuérdate de subir también el cambio.
+    </p>
+
     <a class="boton boton--ancho" href="index.html">Volver al catálogo</a>
   </div>
 </section>
