@@ -337,3 +337,60 @@ body.admin { background: var(--gris-1); }
   .panel__botones { justify-content: stretch; }
   .panel__botones .boton { flex: 1; text-align: center; }
 }
+
+/* ---------- ayuda desplegable en el acceso ---------- */
+
+.ayuda {
+  margin-top: 20px;
+  border-top: 1px solid var(--gris-2);
+  padding-top: 16px;
+}
+.ayuda summary {
+  font-family: var(--cuerpo);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--gris-3);
+}
+.ayuda summary:hover { color: var(--tinta); }
+.ayuda ol {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--gris-3);
+}
+.ayuda li { margin-bottom: 6px; }
+.ayuda b { color: var(--tinta); }
+
+/* ---------- barra de estado de guardado ---------- */
+
+.estado-guardado {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 11px 20px;
+  font-family: var(--dato);
+  font-size: 12.5px;
+  letter-spacing: .02em;
+  text-align: center;
+}
+.estado-guardado--trabajando { background: var(--tinta); color: var(--papel); }
+.estado-guardado--ok         { background: var(--ok);    color: #fff; }
+.estado-guardado--error      { background: var(--alto);  color: #fff; }
+
+/* ---------- bloque de código en los avisos ---------- */
+
+.codigo {
+  font-family: var(--dato);
+  font-size: 12.5px;
+  line-height: 1.6;
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  overflow-x: auto;
+  white-space: pre;
+}
+.codigo b { color: var(--ok); font-weight: 600; }
