@@ -1,0 +1,357 @@
+{
+  "actualizado": "2026-08-21",
+  "categorias": [
+    "Filtración",
+    "Motor",
+    "Frenos",
+    "Eléctrico",
+    "Enfriamiento",
+    "Sistema de aire",
+    "Suspensión"
+  ],
+  "productos": [
+    {
+      "id": "p0001",
+      "parte": "LF9080",
+      "nombre": "Filtro de aceite de flujo total",
+      "categoria": "Filtración",
+      "marca": "Fleetguard",
+      "motores": [
+        "Cummins ISX15",
+        "Cummins X15"
+      ],
+      "specs": [
+        [
+          "Rosca",
+          "1-1/8 - 16 UN"
+        ],
+        [
+          "Micraje",
+          "25 µm"
+        ],
+        [
+          "Altura",
+          "323 mm"
+        ]
+      ],
+      "precio": 890,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0002",
+      "parte": "1000FG",
+      "nombre": "Separador de combustible y agua Turbine",
+      "categoria": "Filtración",
+      "marca": "Racor",
+      "motores": [
+        "Cummins ISX15",
+        "Detroit DD15",
+        "Caterpillar C15"
+      ],
+      "specs": [
+        [
+          "Flujo",
+          "180 L/h"
+        ],
+        [
+          "Micraje",
+          "2 / 10 / 30 µm"
+        ],
+        [
+          "Vaso",
+          "Aluminio con drenaje"
+        ]
+      ],
+      "precio": 6450,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0003",
+      "parte": "HE451VE",
+      "nombre": "Turbocargador de geometría variable",
+      "categoria": "Motor",
+      "marca": "Holset",
+      "motores": [
+        "Cummins ISX15"
+      ],
+      "specs": [
+        [
+          "Actuador",
+          "Electrónico VGT"
+        ],
+        [
+          "Condición",
+          "Remanufacturado"
+        ],
+        [
+          "Garantía",
+          "12 meses / 160,000 km"
+        ]
+      ],
+      "precio": null,
+      "existencia": "pedido",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0004",
+      "parte": "4707-Q-PLUS",
+      "nombre": "Juego de balatas de freno de tambor 16.5\" x 7\"",
+      "categoria": "Frenos",
+      "marca": "Meritor",
+      "motores": [
+        "Universal eje trasero"
+      ],
+      "specs": [
+        [
+          "Medida",
+          "16.5\" x 7\""
+        ],
+        [
+          "Contenido",
+          "8 zapatas + remaches"
+        ],
+        [
+          "Norma",
+          "FMVSS 121"
+        ]
+      ],
+      "precio": 4380,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0005",
+      "parte": "A4722002101",
+      "nombre": "Bomba de agua",
+      "categoria": "Enfriamiento",
+      "marca": "Detroit Diesel",
+      "motores": [
+        "Detroit DD15",
+        "Detroit DD13"
+      ],
+      "specs": [
+        [
+          "Condición",
+          "Nueva OEM"
+        ],
+        [
+          "Incluye",
+          "Empaque y sello"
+        ],
+        [
+          "Garantía",
+          "12 meses"
+        ]
+      ],
+      "precio": 9200,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0006",
+      "parte": "R5237820",
+      "nombre": "Inyector electrónico remanufacturado",
+      "categoria": "Motor",
+      "marca": "Detroit Diesel",
+      "motores": [
+        "Detroit Serie 60 12.7L"
+      ],
+      "specs": [
+        [
+          "Condición",
+          "Remanufacturado en banco"
+        ],
+        [
+          "Prueba",
+          "Certificado de flujo incluido"
+        ],
+        [
+          "Core",
+          "Se requiere entrega de núcleo"
+        ]
+      ],
+      "precio": null,
+      "existencia": "pedido",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0007",
+      "parte": "8600310",
+      "nombre": "Alternador 24SI 12V 160A",
+      "categoria": "Eléctrico",
+      "marca": "Delco Remy",
+      "motores": [
+        "Universal 12V"
+      ],
+      "specs": [
+        [
+          "Salida",
+          "160 A"
+        ],
+        [
+          "Montaje",
+          "Pad mount"
+        ],
+        [
+          "Polea",
+          "8 canales serpentina"
+        ]
+      ],
+      "precio": 12750,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0008",
+      "parte": "BA-921",
+      "nombre": "Compresor de aire de doble cilindro",
+      "categoria": "Sistema de aire",
+      "marca": "Bendix",
+      "motores": [
+        "Cummins ISX15",
+        "Detroit DD15"
+      ],
+      "specs": [
+        [
+          "Desplazamiento",
+          "35.6 CFM"
+        ],
+        [
+          "Enfriamiento",
+          "Por agua"
+        ],
+        [
+          "Condición",
+          "Remanufacturado"
+        ]
+      ],
+      "precio": null,
+      "existencia": "pedido",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0009",
+      "parte": "AD-IP",
+      "nombre": "Secador de aire con purga integrada",
+      "categoria": "Sistema de aire",
+      "marca": "Bendix",
+      "motores": [
+        "Universal sistema neumático"
+      ],
+      "specs": [
+        [
+          "Cartucho",
+          "Reemplazable"
+        ],
+        [
+          "Calefactor",
+          "12V integrado"
+        ],
+        [
+          "Presión",
+          "Hasta 150 psi"
+        ]
+      ],
+      "precio": 8900,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0010",
+      "parte": "2871184",
+      "nombre": "Sensor de posición de cigüeñal",
+      "categoria": "Eléctrico",
+      "marca": "Cummins",
+      "motores": [
+        "Cummins ISX15",
+        "Cummins ISM"
+      ],
+      "specs": [
+        [
+          "Conector",
+          "2 pines sellado"
+        ],
+        [
+          "Condición",
+          "Nueva OEM"
+        ],
+        [
+          "Garantía",
+          "12 meses"
+        ]
+      ],
+      "precio": 3150,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0011",
+      "parte": "BHT-CAC-CS",
+      "nombre": "Enfriador de aire de carga (Charge Air Cooler)",
+      "categoria": "Enfriamiento",
+      "marca": "Bergstrom",
+      "motores": [
+        "Freightliner Cascadia 2008-2017"
+      ],
+      "specs": [
+        [
+          "Núcleo",
+          "Aluminio soldado en horno"
+        ],
+        [
+          "Prueba",
+          "Probado a 60 psi"
+        ],
+        [
+          "Envío",
+          "Sobredimensionado"
+        ]
+      ],
+      "precio": null,
+      "existencia": "agotado",
+      "imagen": null,
+      "visible": true
+    },
+    {
+      "id": "p0012",
+      "parte": "85101",
+      "nombre": "Amortiguador de cabina trasero",
+      "categoria": "Suspensión",
+      "marca": "Gabriel",
+      "motores": [
+        "Kenworth T680",
+        "Peterbilt 579"
+      ],
+      "specs": [
+        [
+          "Extendido",
+          "352 mm"
+        ],
+        [
+          "Comprimido",
+          "228 mm"
+        ],
+        [
+          "Montaje",
+          "Ojo / ojo"
+        ]
+      ],
+      "precio": 1980,
+      "existencia": "en-stock",
+      "imagen": null,
+      "visible": true
+    }
+  ]
+}
