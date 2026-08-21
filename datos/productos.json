@@ -1,11 +1,11 @@
 {
   "actualizado": "2026-08-21",
   "categorias": [
-    "Filtración",
-    "Motor",
-    "Frenos",
     "Eléctrico",
     "Enfriamiento",
+    "Filtración",
+    "Frenos",
+    "Motor",
     "Sistema de aire",
     "Suspensión"
   ],
@@ -36,7 +36,7 @@
       ],
       "precio": 890,
       "existencia": "en-stock",
-      "imagen": null,
+      "imagen": "assets/img/productos/lf9080-1787354176683.jpg",
       "visible": true
     },
     {
