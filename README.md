@@ -168,6 +168,40 @@ Si algún día quieres dominio propio (`dieselis.com`, unos 12–15 USD al año)
 
 ---
 
+## Estructura de los datos
+
+`datos/productos.json` es el catálogo completo. Esta es su forma:
+
+```json
+{
+  "actualizado": "2026-08-21",
+  "categorias": ["Filtración", "Motor", "Frenos"],
+  "productos": [ { ... } ]
+}
+```
+
+Cada producto:
+
+| Campo | Tipo | Obligatorio | Notas |
+|---|---|---|---|
+| `id` | texto | sí | Identificador interno, `p0001`, `p0002`… Lo asigna el panel. **Nunca lo cambies**: es lo que amarra un producto a su historial |
+| `parte` | texto | sí | Número de parte. Debe ser único en todo el catálogo. El panel lo pasa a mayúsculas |
+| `nombre` | texto | sí | Nombre comercial de la refacción |
+| `categoria` | texto | sí | Debe coincidir exactamente con una de `categorias`, o se crea una nueva |
+| `marca` | texto o `null` | no | Fleetguard, Bendix, Holset… |
+| `motores` | lista de textos | sí | Compatibilidad. Lista vacía `[]` si es universal |
+| `specs` | lista de pares | sí | `[["Rosca", "1-1/8 - 16 UN"], ["Micraje", "25 µm"]]`. Lista vacía si no aplica |
+| `precio` | número o `null` | sí | En pesos. `null` significa "bajo cotización" |
+| `existencia` | texto | sí | Solo tres valores: `en-stock`, `pedido`, `agotado` |
+| `imagen` | texto o `null` | sí | Ruta relativa, ej. `assets/img/productos/lf9080-1234.jpg` |
+| `visible` | booleano | sí | `false` lo esconde del sitio público pero lo deja en tu panel |
+
+El panel valida todo esto antes de guardar. Si alguna vez editas el JSON a mano, respeta los tipos: un `precio` entre comillas o un `existencia` mal escrito rompen la ficha en el sitio.
+
+> **Migrar a base de datos en el futuro.** Si algún día el catálogo se te queda corto y te mueves a Postgres, esta tabla es el esquema: un `id` como llave primaria, `parte` con restricción de único, `motores` como arreglo de texto, `specs` como JSON, y `existencia` restringido a esos tres valores. La conversión es directa.
+
+---
+
 ## Cargar el catálogo la primera vez
 
 `datos/productos.json` trae 12 productos de ejemplo para que veas el formato. Bórralos conforme captures los tuyos.
@@ -201,6 +235,29 @@ Esta versión aguanta bien hasta unos mil productos y un puñado de administrado
 - El repositorio se vuelve pesado por las fotos.
 
 Ahí el siguiente paso es una base de datos con autenticación por correo y contraseña (Supabase, plan gratis). El diseño, el PDF y la estructura de datos no cambiarían; solo la capa `datos.js`.
+
+---
+
+## Archivos del logo
+
+| Archivo | Uso |
+|---|---|
+| `assets/img/marca-dis.png` | símbolo solo, negro — barra superior |
+| `assets/img/marca-dis-blanco.png` | símbolo solo, blanco — encabezado del PDF |
+| `assets/img/logo-dieselis.png` | logo completo con texto, negro |
+| `assets/img/logo-dieselis-blanco.png` | logo completo con texto, blanco — pie de página |
+| `assets/img/favicon-512.png` | ícono cuadrado, símbolo blanco sobre negro |
+| `assets/img/apple-touch-icon.png` | 180×180, cuando alguien guarda el sitio en su celular |
+| `assets/img/compartir.jpg` | 1200×630, la miniatura al pegar el link en WhatsApp o Facebook |
+| `favicon.ico` | ícono de la pestaña del navegador. Va en la **raíz**, no en assets |
+
+Los del logo tienen fondo transparente; los íconos y la miniatura llevan fondo negro a propósito, porque un logo transparente sobre el fondo blanco de WhatsApp se ve como recorte.
+
+### Consigue el logo en vectorial
+
+Todos estos archivos salen del PNG que ya tenías, y un PNG tiene resolución fija. Para el sitio va perfecto, pero si algún día quieres el logo en una lona, en la camioneta o en tarjetas de presentación, va a salir pixeleado.
+
+Pídele el archivo vectorial (`.svg`, `.ai` o `.eps`) a quien te hizo el logo. Si lo generaste con IA, hay servicios de vectorización automática que dan buen resultado con un logo tan geométrico como el tuyo. Con el `.svg` en mano se reemplazan los PNG y se regeneran los íconos.
 
 ---
 
