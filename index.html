@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dieselis — Refacciones para camión diesel | Diesel Integrated Solutions LLC</title>
+<meta name="description" content="Catálogo de refacciones para camión diesel: filtración, motor, frenos, eléctrico y sistema de aire. Busca por número de parte y cotiza por WhatsApp.">
+
+<meta property="og:title" content="Dieselis — Refacciones para camión diesel">
+<meta property="og:description" content="Busca por número de parte y cotiza por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/logo-dieselis.png">
+
+<link rel="icon" href="assets/img/marca-dis.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilos.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "name": "Dieselis",
+  "legalName": "Diesel Integrated Solutions LLC",
+  "description": "Refacciones para camión diesel: filtración, motor, frenos, eléctrico y sistema de aire.",
+  "telephone": "+1-619-356-9548",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9096 Avocado St",
+    "addressLocality": "Spring Valley",
+    "addressRegion": "CA",
+    "postalCode": "91977",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 32.731758, "longitude": -117.003883 },
+  "areaServed": [
+    { "@type": "City", "name": "Tijuana" },
+    { "@type": "City", "name": "Spring Valley" }
+  ],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00",
+    "closes": "17:00"
+  }]
+}
+</script>
+</head>
+<body>
+
+<a class="salto" href="#catalogo">Ir al catálogo</a>
+
+<header class="barra">
+  <div class="contenedor barra__fila">
+    <a class="marca" href="./">
+      <img class="marca__simbolo" src="assets/img/marca-dis.png" alt="Dieselis">
+      <span class="marca__texto">
+        <strong>Dieselis</strong>
+        <small>Diesel Integrated Solutions LLC</small>
+      </span>
+    </a>
+    <div class="barra__acciones">
+      <a class="barra__tel" href="tel:+16193569548">+1 619 356 9548</a>
+      <a class="boton" href="https://wa.me/16193569548" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="portada">
+    <div class="contenedor">
+      <p class="cejilla">Catálogo en línea · Entrega en Tijuana · Mostrador en Spring Valley, CA</p>
+      <h1>Dinos el número de parte. <em>Nosotros la conseguimos.</em></h1>
+
+      <div class="buscador">
+        <label class="buscador__etq" for="q">Buscar por número de parte, refacción o motor</label>
+        <div class="buscador__caja">
+          <span class="buscador__icono" aria-hidden="true">&#9906;</span>
+          <input id="q" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="LF9080, turbocargador, ISX15&hellip;">
+          <button type="button" id="limpiar" class="buscador__limpiar" hidden>Borrar</button>
+        </div>
+      </div>
+
+      <div class="atajos" role="group" aria-label="Motores frecuentes">
+        <span class="atajos__etq">Motores frecuentes</span>
+        <button type="button" class="atajo" data-buscar="ISX15">Cummins ISX15</button>
+        <button type="button" class="atajo" data-buscar="DD15">Detroit DD15</button>
+        <button type="button" class="atajo" data-buscar="C15">Caterpillar C15</button>
+        <button type="button" class="atajo" data-buscar="Serie 60">Serie 60</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="catalogo">
+    <div class="contenedor">
+
+      <div class="filtros">
+        <div class="filtros__grupo" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+        <div class="filtros__lado">
+          <label class="interruptor">
+            <input type="checkbox" id="soloStock">
+            <span>Solo en existencia</span>
+          </label>
+          <p class="conteo" id="conteo" role="status" aria-live="polite"></p>
+          <button type="button" class="boton boton--linea" id="btnPdf">Descargar catálogo PDF</button>
+        </div>
+      </div>
+
+      <div class="rejilla" id="rejilla"></div>
+
+      <div class="vacio" id="vacio" hidden>
+        <p class="vacio__titulo">No hay coincidencias</p>
+        <p>Revisa el número de parte o escríbenos: conseguimos sobre pedido casi cualquier número.</p>
+        <a class="boton" id="vacioWa" href="#">Pedir por WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <img class="pie__logo" src="assets/img/logo-dieselis-blanco.png" alt="Diesel Integrated Solutions LLC">
+  </div>
+  <div class="contenedor pie__fila">
+    <div>
+      <p class="pie__titulo">Mostrador</p>
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=9096+Avocado+St+Spring+Valley+CA+91977"
+           target="_blank" rel="noopener">9096 Avocado St<br>Spring Valley, CA 91977</a>
+      </p>
+    </div>
+    <div>
+      <p class="pie__titulo">Horario</p>
+      <p>Lunes a viernes<br>8:00 – 17:00</p>
+    </div>
+    <div>
+      <p class="pie__titulo">Cobertura</p>
+      <p>Venta y entrega en Tijuana<br>y zona conurbada</p>
+    </div>
+    <div>
+      <p class="pie__titulo">Contacto</p>
+      <p>
+        <a href="https://wa.me/16193569548" target="_blank" rel="noopener">WhatsApp +1 619 356 9548</a><br>
+        <a href="tel:+16193569548">Llamar +1 619 356 9548</a>
+      </p>
+    </div>
+  </div>
+  <div class="contenedor pie__legal">
+    <p>Los números de parte OEM se citan solo como referencia de compatibilidad. Precios en pesos mexicanos, sujetos a cambio sin previo aviso.</p>
+    <p style="margin-top:8px"><a href="admin.html">Acceso administrativo</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

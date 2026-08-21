@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · Dieselis</title>
+
+<link rel="icon" href="assets/img/marca-dis.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilos.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body class="admin">
+
+<!-- ===== Pantalla de acceso ===== -->
+<section id="acceso" class="acceso" hidden>
+  <div class="acceso__caja">
+    <img class="acceso__logo" src="assets/img/marca-dis.png" alt="Dieselis">
+    <h1>Panel de administración</h1>
+    <p class="acceso__nota">
+      Acceso restringido. Pega tu token de acceso de GitHub — se guarda
+      solo en este dispositivo y nunca sale de tu navegador.
+    </p>
+
+    <label class="campo">
+      <span>Token de GitHub</span>
+      <input id="token" type="password" autocomplete="off" spellcheck="false"
+             placeholder="github_pat_…">
+    </label>
+
+    <button class="boton boton--ancho" id="btnEntrar" type="button">Entrar</button>
+
+    <details class="ayuda">
+      <summary>¿Cómo saco mi token?</summary>
+      <ol>
+        <li>En GitHub: foto de perfil → <b>Settings</b> → hasta abajo, <b>Developer settings</b>.</li>
+        <li><b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+        <li>En <b>Repository access</b> elige <b>Only select repositories</b> y marca el repositorio del catálogo.</li>
+        <li>En <b>Permissions → Repository permissions</b>, pon <b>Contents</b> en <b>Read and write</b>.</li>
+        <li>Genera el token, cópialo y pégalo aquí. GitHub solo te lo muestra una vez.</li>
+      </ol>
+    </details>
+    <p class="aviso" id="avisoAcceso" role="alert" hidden></p>
+  </div>
+</section>
+
+<!-- ===== Aviso de configuración pendiente ===== -->
+<section id="sinConfig" class="acceso" hidden>
+  <div class="acceso__caja">
+    <img class="acceso__logo" src="assets/img/marca-dis.png" alt="Dieselis">
+    <h1>Falta conectar la base de datos</h1>
+    <p class="acceso__nota">
+      Abre <code>assets/js/config.js</code> y cambia <code>github.usuario</code>
+      por tu nombre de usuario de GitHub, y <code>github.repo</code> por el nombre
+      del repositorio. Los pasos están en el README.
+    </p>
+    <a class="boton boton--ancho" href="index.html">Volver al catálogo</a>
+  </div>
+</section>
+
+<!-- ===== Panel ===== -->
+<div id="panel" hidden>
+
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="marca" href="index.html">
+        <img class="marca__simbolo" src="assets/img/marca-dis.png" alt="Dieselis">
+        <span class="marca__texto">
+          <strong>Panel</strong>
+          <small>Catálogo de refacciones</small>
+        </span>
+      </a>
+      <div class="barra__acciones">
+        <span class="sesion" id="sesionCorreo"></span>
+        <button class="boton boton--linea" id="btnSalir" type="button">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <p id="estadoGuardado" class="estado-guardado" role="status" aria-live="polite" hidden></p>
+
+  <main class="contenedor panel">
+
+    <div class="panel__herramientas">
+      <div class="buscador buscador--claro">
+        <div class="buscador__caja">
+          <span class="buscador__icono" aria-hidden="true">&#9906;</span>
+          <input id="adminQ" type="search" placeholder="Filtrar por parte, nombre o marca…" autocomplete="off">
+        </div>
+      </div>
+      <div class="panel__botones">
+        <button class="boton boton--linea" id="btnPdfAdmin" type="button">Descargar PDF</button>
+        <button class="boton" id="btnNuevo" type="button">Nuevo producto</button>
+      </div>
+    </div>
+
+    <p class="panel__conteo" id="adminConteo" role="status" aria-live="polite"></p>
+
+    <div class="tabla-envoltura">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>No. de parte</th>
+            <th>Refacción</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Existencia</th>
+            <th>En el sitio</th>
+            <th><span class="oculto-visual">Acciones</span></th>
+          </tr>
+        </thead>
+        <tbody id="adminCuerpo"></tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===== Formulario ===== -->
+<dialog id="dlg" class="dlg">
+  <form method="dialog" id="form" class="dlg__forma">
+    <header class="dlg__cabeza">
+      <h2 id="dlgTitulo">Nuevo producto</h2>
+      <button class="dlg__cerrar" type="button" id="btnCerrar" aria-label="Cerrar">&times;</button>
+    </header>
+
+    <div class="dlg__cuerpo">
+      <div class="fila2">
+        <label class="campo">
+          <span>Número de parte *</span>
+          <input id="fParte" required placeholder="LF9080">
+        </label>
+        <label class="campo">
+          <span>Marca</span>
+          <input id="fMarca" placeholder="Fleetguard">
+        </label>
+      </div>
+
+      <label class="campo">
+        <span>Nombre de la refacción *</span>
+        <input id="fNombre" required placeholder="Filtro de aceite de flujo total">
+      </label>
+
+      <div class="fila2">
+        <label class="campo">
+          <span>Categoría *</span>
+          <input id="fCategoria" list="listaCategorias" required placeholder="Filtración">
+          <datalist id="listaCategorias"></datalist>
+        </label>
+        <label class="campo">
+          <span>Precio (MXN) — vacío = bajo cotización</span>
+          <input id="fPrecio" type="number" min="0" step="1" placeholder="890">
+        </label>
+      </div>
+
+      <label class="campo">
+        <span>Motores compatibles — separados por coma</span>
+        <input id="fMotores" placeholder="Cummins ISX15, Cummins X15">
+      </label>
+
+      <fieldset class="campo campo--specs">
+        <legend>Especificaciones</legend>
+        <div id="fSpecs"></div>
+        <button class="boton boton--linea boton--chico" type="button" id="btnSpec">Agregar renglón</button>
+      </fieldset>
+
+      <div class="fila2">
+        <label class="campo">
+          <span>Existencia</span>
+          <select id="fExistencia">
+            <option value="en-stock">En existencia</option>
+            <option value="pedido">Sobre pedido</option>
+            <option value="agotado">Agotado</option>
+          </select>
+        </label>
+        <label class="campo campo--check">
+          <input id="fVisible" type="checkbox" checked>
+          <span>Mostrar en el catálogo público</span>
+        </label>
+      </div>
+
+      <label class="campo">
+        <span>Foto</span>
+        <input id="fImagen" type="file" accept="image/*">
+        <img id="fPreview" class="previa" alt="" hidden>
+      </label>
+
+      <p class="aviso" id="avisoForma" role="alert" hidden></p>
+    </div>
+
+    <footer class="dlg__pie">
+      <button class="boton boton--linea" type="button" id="btnCancelar">Cancelar</button>
+      <button class="boton" type="button" id="btnGuardar">Guardar</button>
+    </footer>
+  </form>
+</dialog>
+
+<script src="assets/js/config.js"></script>
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>
